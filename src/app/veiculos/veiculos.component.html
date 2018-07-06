@@ -1,8 +1,36 @@
 <div class="row">
     <div class="col-12 margin-b-20">
-        <h3>
-            <!-- Lista de Veiculos -->
-        </h3>
+
+        <div class="alert alert-primary" role="alert" *ngIf="isBusy">
+            <i class="fas fa-sync-alt rotating"></i> Aguarde, estamos carregando os dados!
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="!isBusy && veiculos.length == 0">
+            <i class="fas fa-exclamation-triangle"></i> Ops, nenhum dado foi encontrado! Verifique se está rodando a sua
+            <a href="https://github.com/rogeriosfa/veiculos_laravel_api" target="_blank">API de Veiculos</a>, caso sim, pode ser que ainda não há veiculos cadastros.
+        </div>
+
+
+        <h3> Lista de Veiculos </h3>
+
+        <form class="margin-t-20 col-md-8 offset-md-2" (ngSubmit)="searchVeiculos()" #searchForm="ngForm">
+            <div class="form-row align-items-center">
+                <div class="col-md-10">
+                    <label class="sr-only" for="inlineFormInput">Name</label>
+                    <input type="text" class="form-control mb-8" id="inlineFormInput" placeholder="Digite aqui: Veículo ou Marca." name="params"
+                        [(ngModel)]="params">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">
+                        <i class="fas fa-filter"></i> Filtrar
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <button type="button" routerLink="/veiculos/new" class="margin-b-10 float-right btn btn-primary btn-sm">
+            <i class="fas fa-plus"></i> Novo
+        </button>
 
         <table class="table table-hover margin-t-20">
             <thead>
@@ -18,15 +46,26 @@
                 </tr>
             </thead>
             <tbody>
+
                 <tr *ngFor="let v of veiculos">
                     <td>{{v?.id}}</td>
                     <td>{{v?.veiculo}}</td>
                     <td>{{v?.marca}}</td>
                     <td>{{v?.ano}}</td>
                     <td>{{v?.descricao}}</td>
-                    <td>{{v?.vendido}}</td>
-                    <td>{{v?.ano}}</td>
-                    <td></td>
+                    <td class="text-center">
+                        <span *ngIf="v?.vendido == 1" class="badge badge-success">Sim</span>
+                        <span *ngIf="v?.vendido != 1" class="badge badge-warning">Não</span>
+                    </td>
+                    <td>{{v?.created_at | date:"MM/dd/yy" }}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" routerLink="/veiculos/{{v?.id}}">
+                            <i class="far fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm margin-l-5" (click)="deleteVeiculo(v?.id)">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
