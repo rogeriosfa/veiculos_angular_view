@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-12 margin-b-20">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 margin-b-20">
 
         <div class="alert alert-primary" role="alert" *ngIf="isBusy">
             <i class="fas fa-sync-alt rotating"></i> Aguarde, estamos carregando os dados!
@@ -13,16 +13,16 @@
 
         <h3> Lista de Veiculos </h3>
 
-        <form class="margin-t-20 col-md-8 offset-md-2" (ngSubmit)="searchVeiculos()" #searchForm="ngForm">
+        <form class="margin-t-20 col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 offset-lg-2 offset-xl-2" (ngSubmit)="searchVeiculos()" #searchForm="ngForm">
             <div class="form-row align-items-center">
-                <div class="col-md-10">
+                <div class="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                     <label class="sr-only" for="inlineFormInput">Name</label>
-                    <input type="text" class="form-control mb-8" id="inlineFormInput" placeholder="Digite aqui: Veículo ou Marca." name="params"
-                        [(ngModel)]="params">
+                    <input type="text" class="form-control mb-8" id="inlineFormInput" placeholder="Digite aqui: Veículo ou Marca." name="params" [(ngModel)]="params">
                 </div>
-                <div class="col-auto">
+                <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                     <button type="submit" class="btn btn-primary mb-2">
-                        <i class="fas fa-filter"></i> Filtrar
+                        <i class="fas fa-filter"></i>
+                        <span class="d-none"> Filtrar </span>
                     </button>
                 </div>
             </div>
@@ -32,43 +32,45 @@
             <i class="fas fa-plus"></i> Novo
         </button>
 
-        <table class="table table-hover margin-t-20">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Veiculo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Ano</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Vendido</th>
-                    <th scope="col">Registro</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="table-responsive">
+            <table class="table table-hover margin-t-20">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Veiculo</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Ano</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Vendido</th>
+                        <th scope="col">Registro</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                <tr *ngFor="let v of veiculos">
-                    <td>{{v?.id}}</td>
-                    <td>{{v?.veiculo}}</td>
-                    <td>{{v?.marca}}</td>
-                    <td>{{v?.ano}}</td>
-                    <td>{{v?.descricao}}</td>
-                    <td class="text-center">
-                        <span *ngIf="v?.vendido == 1" class="badge badge-success">Sim</span>
-                        <span *ngIf="v?.vendido != 1" class="badge badge-warning">Não</span>
-                    </td>
-                    <td>{{v?.created_at | date:"MM/dd/yy" }}</td>
-                    <td>
-                        <button type="button" class="btn btn-outline-secondary btn-sm" routerLink="/veiculos/{{v?.id}}">
-                            <i class="far fa-edit"></i>
-                        </button>
-                        <button type="button" class="btn btn-outline-danger btn-sm margin-l-5" (click)="deleteVeiculo(v?.id)">
-                            <i class="far fa-trash-alt"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    <tr *ngFor="let v of veiculos">
+                        <td>{{v?.id}}</td>
+                        <td>{{v?.veiculo}}</td>
+                        <td>{{v?.marca}}</td>
+                        <td>{{v?.ano}}</td>
+                        <td>{{v?.descricao}}</td>
+                        <td class="text-center">
+                            <span *ngIf="v?.vendido == 1" class="badge badge-success">Sim</span>
+                            <span *ngIf="v?.vendido != 1" class="badge badge-warning">Não</span>
+                        </td>
+                        <td>{{v?.created_at | date:"MM/dd/yy" }}</td>
+                        <td>
+                            <button type="button" class="btn btn-outline-secondary btn-sm" routerLink="/veiculos/{{v?.id}}">
+                                <i class="far fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-outline-danger btn-sm margin-l-5 margin-t-5-m" (click)="deleteVeiculo(v?.id)">
+                                <i class="far fa-trash-alt"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

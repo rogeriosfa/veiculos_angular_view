@@ -5,7 +5,7 @@ export class VeiculoModel {
     public marca: string;
     public ano: number;
     public descricao: string;
-    public vendido: boolean;
+    public vendido: number = 0;
     public created_at: Date;
     public updated_at: Date;
 
