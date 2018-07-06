@@ -1,3 +1,27 @@
+# Instruções para uso
+
+Para roda este projeto você precisa ter [Node.js](https://nodejs.org/en/) instalado em sua maquina.
+
+Também estamos utilizano [Angular CLI](https://github.com/angular/angular-cli/wiki).
+
+    npm install -g @angular/cli
+
+Após Instalar Angular CLI, no diretorio do projeto execute o seguinte comando para criar o pacote node_modules:
+
+    npm install
+
+Agora que tudo está configurado, basta executar o seguinte comando para rodar o projeto no navegador:
+
+    ng serve
+
+O projeto será disponibilizado na seguinte rota: 
+
+    http://localhost:4200
+
+Caso a porta 4200 esteja em uso, o pront irá avisar, para contorna esse questão basta usar o seguinte comando:
+
+    ng serve --port 4201
+
 # VeiculosView
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
