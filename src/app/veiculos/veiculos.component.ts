@@ -1,3 +1,4 @@
+import { VeiculosModel } from './../core/models/veiculos.model';
 import { Component, OnInit } from '@angular/core';
 import { VeiculosService } from '../core/services/veiculos.service';
 
@@ -7,6 +8,8 @@ import { VeiculosService } from '../core/services/veiculos.service';
     styleUrls: ['./veiculos.component.css']
 })
 export class VeiculosComponent implements OnInit {
+
+    public veiculos: VeiculosModel[] = [];
 
     constructor(
         private veiculosService: VeiculosService,
@@ -20,6 +23,7 @@ export class VeiculosComponent implements OnInit {
         this.veiculosService.getVeiculos().subscribe(
             result => {
                 console.log(result);
+                this.veiculos = result;
             },
             erro => {
                 console.log(erro);

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-10 offset-md-1 margin-b-20">
+    <div class="col-12 margin-b-20">
         <h3>
             <!-- Lista de Veiculos -->
         </h3>
@@ -13,18 +13,19 @@
                     <th scope="col">Ano</th>
                     <th scope="col">Descrição</th>
                     <th scope="col">Vendido</th>
-                    <th scope="col">Data de registro</th>
-                    <th></th>
+                    <th scope="col">Registro</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                <tr *ngFor="let v of veiculos">
+                    <td>{{v?.id}}</td>
+                    <td>{{v?.veiculo}}</td>
+                    <td>{{v?.marca}}</td>
+                    <td>{{v?.ano}}</td>
+                    <td>{{v?.descricao}}</td>
+                    <td>{{v?.vendido}}</td>
+                    <td>{{v?.ano}}</td>
                     <td></td>
                 </tr>
             </tbody>

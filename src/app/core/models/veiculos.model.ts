@@ -1,4 +1,4 @@
-export class Veiculos {
+export class VeiculosModel {
 
     public id: number;
     public veiculo: string;

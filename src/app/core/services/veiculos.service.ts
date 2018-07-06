@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { Veiculos } from '../models/veiculos';
+import { VeiculosModel } from '../models/veiculos.model';
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -19,8 +19,8 @@ export class VeiculosService {
     ) { }
 
 
-    getVeiculos(): Observable<Veiculos[]> {
-        return this.http.get<Veiculos[]>(this.path)
+    getVeiculos(): Observable<VeiculosModel[]> {
+        return this.http.get<VeiculosModel[]>(this.path)
             .pipe(
                 tap(heroes => this.log(`fetched veiculos`)),
                 catchError(this.handleError('getHeroes', []))
